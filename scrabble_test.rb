@@ -9,4 +9,10 @@ class ScrabbleTest < MiniTest::Unit::TestCase
     game = Scrabble.new('hello').score
     assert_equal 8, game
   end
+
+  def test_empty_word_scored_zero
+    game = Scrabble.new('').score
+    assert_equal 0, game
+  end
+
 end
