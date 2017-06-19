@@ -35,4 +35,9 @@ class ScrabbleTest < MiniTest::Unit::TestCase
     game = Scrabble.new
     assert_equal 16, game.double_word('hello')
   end
+
+  def test_triple_word_score
+    game = Scrabble.new
+    assert_equal 24, game.triple_word('hello')
+  end
 end
