@@ -50,5 +50,9 @@ class ScrabbleTest < MiniTest::Unit::TestCase
     game = Scrabble.new
     assert_equal 12, game.triple_letter('hello','l')
   end
-  
+
+  def test_double_letter_not_in_the_word
+    game = Scrabble.new
+    assert_equal 'invalid letter', game.double_letter('hello','b')
+  end
 end

@@ -39,18 +39,23 @@ class Scrabble
   end
 
   def double_letter(word,letter)
-    # letter value
-    @@letter_value = @@letters_points.values_at(*letter.upcase.chars).reduce(:+)
-    # the letter value is added once because is already added in the word score once
-    final_score = score(word) + @@letter_value
+    # count how many times the letter is repeated into the word
+    @@letter_repetition = word.count letter
+    if @@letter_repetition === 0
+      return 'invalid letter'
+    else
+      # letter value
+      @@letter_value = @@letters_points.values_at(*letter.upcase.chars).reduce(:+)
+      # the letter value is added once because is already added in the word score once
+      final_score = score(word) + @@letter_value
+    end
   end
 
   def triple_letter(word,letter)
-    # count how many times the letter is repeated into the word
-    letter_repetition = word.count letter
     # the letter_score is added at the word score twice because is already counted once
-    double_letter_value = 2 * @@letter_value
-    final_score = score(word) + letter_repetition * double_letter_value
+    double_letter_value = 2 * @@letters_points.values_at(*letter.upcase.chars).reduce(:+)
+    # the double_letter_value is added how many times (@@letter_repetition) the letter is repeated in the word
+    final_score = score(word) + @@letter_repetition * double_letter_value
   end
 
 end
