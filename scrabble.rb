@@ -1,4 +1,3 @@
-
 class Scrabble
 
   def score(word)
@@ -16,15 +15,15 @@ class Scrabble
 
     if word === nil
       return 0
-# check if there are special characters or numbers in the word
+
+    # check if there are special characters or numbers in the word
     elsif word =~ /[^a-zA-Z]/
       return 'invalid input, please enter only letters'
+
+    # the word's letters are compared with the hash key and the corrisponding value
+    # is added at the counter (tot_score) with reduce, the default value is zero so if no word is entered return 0.
+    # All letters are converted in upcase to match the hash keys.
     else
-=begin
-the word's letters are compared with the hash key and the corrisponding value
-is added at the counter (tot_score) with reduce, the default value is zero so if no word is entered return 0.
-All letters are converted in upcase to match the hash keys.
-=end
       tot_score = 0
       tot_score = @@letters_points.values_at(*word.upcase.chars).reduce(0, :+)
         return tot_score
@@ -40,13 +39,18 @@ All letters are converted in upcase to match the hash keys.
   end
 
   def double_letter(word,letter)
+    # letter value
+    @@letter_value = @@letters_points.values_at(*letter.upcase.chars).reduce(:+)
     # the letter value is added once because is already added in the word score once
-    final_score = score(word) + @@letters_points.values_at(*letter.upcase.chars).reduce(:+)
+    final_score = score(word) + @@letter_value
   end
 
   def triple_letter(word,letter)
-    # the double_letter_score is the letter value double that will be added at the word score where the letter's value is already added once
-    double_letter_score = @@letters_points.values_at(*letter.upcase.chars).to_i
-    final_score = score(word) + 2 * letter_score
+    # count how many times the letter is repeated into the word
+    letter_repetition = word.count letter
+    # the letter_score is added at the word score twice because is already counted once
+    double_letter_value = 2 * @@letter_value
+    final_score = score(word) + letter_repetition * double_letter_value
   end
+
 end

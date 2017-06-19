@@ -50,4 +50,5 @@ class ScrabbleTest < MiniTest::Unit::TestCase
     game = Scrabble.new
     assert_equal 12, game.triple_letter('hello','l')
   end
+  
 end
