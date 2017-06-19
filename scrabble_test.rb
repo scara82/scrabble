@@ -5,7 +5,7 @@ require_relative "scrabble"
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 class ScrabbleTest < MiniTest::Unit::TestCase
-  
+
   def test_score_return_points
     game = Scrabble.new
     assert_equal 8, game.score("hello")
@@ -26,4 +26,8 @@ class ScrabbleTest < MiniTest::Unit::TestCase
     assert_equal 'invalid input, please enter only letters', game.score('h3ll#')
   end
 
+  def test_word_with_only_numbers_is_invalid
+    game = Scrabble.new
+    assert_equal 'invalid input, please enter only letters', game.score('5')
+  end
 end

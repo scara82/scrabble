@@ -17,7 +17,7 @@ class Scrabble
     if word === nil
       return 0
     # checking if there are special characters or numbers in the word
-    elsif word =~ /[^a-zA-Z0-9]/
+    elsif word =~ /[^a-zA-Z]/
       return 'invalid input, please enter only letters'
     else
       tot_score = 0
