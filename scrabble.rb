@@ -21,6 +21,8 @@ class Scrabble
       return 'invalid input, please enter only letters'
     else
       tot_score = 0
+      # the word's letters are compared with the hash key and the corrisponding value
+      # is added at the counter (tot_score). All the letters are converted in upcase as in the hash.
       tot_score = letters_points.values_at(*word.upcase.chars).reduce(0, :+)
         return tot_score
     end
