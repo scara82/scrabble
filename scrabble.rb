@@ -40,6 +40,13 @@ All letters are converted in upcase to match the hash keys.
   end
 
   def double_letter(word,letter)
+    # the letter value is added once because is already added in the word score once
     final_score = score(word) + @@letters_points.values_at(*letter.upcase.chars).reduce(:+)
+  end
+
+  def triple_letter(word,letter)
+    # the double_letter_score is the letter value double that will be added at the word score where the letter's value is already added once
+    double_letter_score = @@letters_points.values_at(*letter.upcase.chars).to_i
+    final_score = score(word) + 2 * letter_score
   end
 end
