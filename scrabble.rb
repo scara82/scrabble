@@ -1,4 +1,4 @@
-# require "pry"
+
 # hash with the letters points
 @@letters_points = {
   "A" => 1, "B" => 3, "C" => 3, "D" => 2,
@@ -17,10 +17,12 @@ class Scrabble
   end
 
   def score
-    tot_score = 0
-    tot_score = @@letters_points.values_at(*@word.upcase.chars).reduce(0, :+)
-      return tot_score
+    if @word === nil
+      return 0
+    else
+      tot_score = 0
+      tot_score = @@letters_points.values_at(*@word.upcase.chars).reduce(0, :+)
+        return tot_score
+    end
   end
 end
-
-# binding.pry

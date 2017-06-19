@@ -15,4 +15,9 @@ class ScrabbleTest < MiniTest::Unit::TestCase
     assert_equal 0, game
   end
 
+  def test_nil_scored_zero
+    game = Scrabble.new(nil).score
+    assert_equal 0, game
+  end
+  
 end
