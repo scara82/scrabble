@@ -6,18 +6,18 @@ Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 class ScrabbleTest < MiniTest::Unit::TestCase
   def test_score_return_points
-    game = Scrabble.new('hello').score
-    assert_equal 8, game
+    game = Scrabble.new
+    assert_equal 8, game.score("hello")
   end
 
   def test_empty_word_scored_zero
-    game = Scrabble.new('').score
-    assert_equal 0, game
+    game = Scrabble.new
+    assert_equal 0, game.score('')
   end
 
   def test_nil_scored_zero
-    game = Scrabble.new(nil).score
-    assert_equal 0, game
+    game = Scrabble.new
+    assert_equal 0, game.score('')
   end
-  
+
 end
