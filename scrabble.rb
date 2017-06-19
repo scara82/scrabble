@@ -13,11 +13,9 @@ class Scrabble
   "Y" => 4, "Z" => 10
   }
 
-  def initialize(word)
-    @word = word
-  end
-
-  def score
+  def score(word)
+    word = word.upcase
+    return word
   end
 end
 
