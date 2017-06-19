@@ -27,4 +27,8 @@ class Scrabble
         return tot_score
     end
   end
+
+  def double_word(word)
+    double_word_score = score(word) * 2
+  end
 end
