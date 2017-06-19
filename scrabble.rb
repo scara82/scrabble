@@ -13,9 +13,12 @@ class Scrabble
       "U" => 1, "V" => 4, "W" => 4, "X" => 8,
       "Y" => 4, "Z" => 10
     }
-    
+
     if word === nil
       return 0
+    # checking if there are special characters or numbers in the word
+    elsif word =~ /[^a-zA-Z0-9]/
+      return 'invalid input, please enter only letters'
     else
       tot_score = 0
       tot_score = letters_points.values_at(*word.upcase.chars).reduce(0, :+)
