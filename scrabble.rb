@@ -20,8 +20,9 @@ class Scrabble
     elsif word =~ /[^a-zA-Z]/
       return 'invalid input, please enter only letters'
 
-    # the word's letters are compared with the hash key and the corrisponding value
-    # is added at the counter (tot_score) with reduce, the default value is zero so if no word is entered return 0.
+    # the word's letters are compared with the hash key and the corresponding value
+    # is added at the counter (tot_score) with the reduce method. 
+    # The default value is zero so if no word is entered it returns 0.
     # All letters are converted in upcase to match the hash keys.
     else
       tot_score = 0
