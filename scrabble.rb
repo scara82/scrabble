@@ -1,18 +1,16 @@
 class Scrabble
 
+  @@letters_points = {
+    "A" => 1, "B" => 3, "C" => 3, "D" => 2,
+    "E" => 1, "F" => 4, "G" => 2, "H" => 4,
+    "I" => 1, "J" => 8, "K" => 5, "L" => 1,
+    "M" => 3, "N" => 1, "O" => 1, "P" => 3,
+    "Q" => 10, "R" => 1, "S" => 1, "T" => 1,
+    "U" => 1, "V" => 4, "W" => 4, "X" => 8,
+    "Y" => 4, "Z" => 10
+  }
+
   def score(word)
-
-    # hash with the letters points
-    @@letters_points = {
-      "A" => 1, "B" => 3, "C" => 3, "D" => 2,
-      "E" => 1, "F" => 4, "G" => 2, "H" => 4,
-      "I" => 1, "J" => 8, "K" => 5, "L" => 1,
-      "M" => 3, "N" => 1, "O" => 1, "P" => 3,
-      "Q" => 10, "R" => 1, "S" => 1, "T" => 1,
-      "U" => 1, "V" => 4, "W" => 4, "X" => 8,
-      "Y" => 4, "Z" => 10
-    }
-
     if word === nil
       return 0
 
@@ -31,6 +29,10 @@ class Scrabble
     end
   end
 
+  def letter_score(letter)
+    @@letters_points[letter.upcase]
+  end
+
   def double_word(word)
     double_word_score = score(word) * 2
   end
@@ -41,23 +43,25 @@ class Scrabble
 
   def double_letter(word,letter)
     # count how many times the letter is repeated into the word
-    @@letter_repetition = word.count letter
-    if @@letter_repetition === 0
+    @letter_repetition = word.count letter
+    if @letter_repetition === 0
       return 'invalid letter'
     else
-      # letter value
-      @@letter_value = @@letters_points.values_at(*letter.upcase).reduce(:+)
       # the letter value is added once because is already added in the word score once
-      final_score = score(word) + @@letter_value
+      final_score = score(word) + letter_score(letter)
     end
   end
 
   def triple_letter(word,letter)
-    # the letter_score is added at the word score twice because is already counted once
-    tot_score = @@letters_points.values_at(*letter.upcase).reduce(:+)
-    double_letter_value = tot_score * 3
-    # the double_letter_value is added how many times (@@letter_repetition) the letter is repeated in the word
-    final_score = score(word) + @@letter_repetition * double_letter_value
+    # count how many times the letter is repeated into the word
+    letter_repetition = word.count letter
+    if letter_repetition === 0
+      return 'invalid letter'
+    else
+      # the letter_score is added at the word score twice because is already counted once
+      # the double_letter_value is added how many times (@@letter_repetition) the letter is repeated in the word
+      final_score = score(word) + 2 * letter_repetition * letter_score(letter)
+    end
   end
 
 end

@@ -31,6 +31,11 @@ class ScrabbleTest < MiniTest::Unit::TestCase
     assert_equal 'invalid input, please enter only letters', game.score('5')
   end
 
+  def test_letter_score
+    game = Scrabble.new
+    assert_equal 10, game.letter_score('q')
+  end
+
   def test_double_word_score
     game = Scrabble.new
     assert_equal 16, game.double_word('hello')
