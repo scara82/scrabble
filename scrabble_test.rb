@@ -60,4 +60,9 @@ class ScrabbleTest < MiniTest::Unit::TestCase
     game = Scrabble.new
     assert_equal 'invalid letter', game.double_letter('hello','b')
   end
+
+  def test_n_times_letter_score
+    game = Scrabble.new
+    assert_equal 16, game.n_times_letter('hello', 'h', 3)
+  end
 end

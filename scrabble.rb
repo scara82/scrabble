@@ -62,7 +62,7 @@ class Scrabble
   end
 
   def n_times_letter(word, letter, times)
-
+    return ((n = word.count letter) > 0)? (score(word) + (times - 1) * n * letter_score(letter)) : 'invalid letter'
   end
 
 end
