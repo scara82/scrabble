@@ -48,7 +48,7 @@ class ScrabbleTest < MiniTest::Unit::TestCase
 
   def test_double_letter_score
     game = Scrabble.new
-    assert_equal 9, game.double_letter('hello','l')
+    assert_equal 10, game.double_letter('hello','l')
   end
 
   def test_triple_letter_score

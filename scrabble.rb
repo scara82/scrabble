@@ -30,8 +30,7 @@ class Scrabble
   end
 
   def is_the_letter_into_the_word?(word, letter)
-    n = word.count letter
-    return (n > 0)? "#{n} times" : 'no, the letter is not in the word'
+    return ((n = word.count letter) > 0)? "#{n} times" : 'no, the letter is not in the word'
   end
 
   def letter_score(letter)
@@ -47,26 +46,19 @@ class Scrabble
   end
 
   def double_letter(word,letter)
-    # count how many times the letter is repeated into the word
-    letter_repetition = word.count letter
-    if letter_repetition === 0
-      return 'invalid letter'
-    else
-      # the letter value is added once because is already added in the word score once
-      final_score = score(word) + letter_score(letter)
-    end
+    # the conditional contruct will check how many times the letter is in the word.
+    # if zero a "invalid letter" messagge will be returned otherwise will return
+    # the basic score of the word, plus the letter value one time (because one times
+    # has already been counted in score()) plus n times the letter is in the word)
+    return ((n = word.count letter) > 0)? (score(word) + n * letter_score(letter)) : 'invalid letter'
   end
 
   def triple_letter(word,letter)
-    # count how many times the letter is repeated into the word
-    letter_repetition = word.count letter
-    if letter_repetition === 0
-      return 'invalid letter'
-    else
-      # the letter_score is added at the word score twice because is already counted once
-      # the double_letter_value is added how many times (@@letter_repetition) the letter is repeated in the word
-      final_score = score(word) + 2 * letter_repetition * letter_score(letter)
-    end
+    # the conditional contruct will check how many times the letter is in the word.
+    # if zero a "invalid letter" messagge will be returned otherwise will return
+    # the basic score of the word, plus the letter value two time (because one times
+    # has already been counted in score()) plus n times the letter is in the word)
+    return ((n = word.count letter) > 0)? (score(word) + 2 * n * letter_score(letter)) : 'invalid letter'
   end
 
   def n_times_letter(word, letter, times)
