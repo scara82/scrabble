@@ -21,7 +21,7 @@ class Scrabble
       return 'invalid input, please enter only letters'
 
     # the word's letters are compared with the hash key and the corresponding value
-    # is added at the counter (tot_score) with the reduce method. 
+    # is added at the counter (tot_score) with the reduce method.
     # The default value is zero so if no word is entered it returns 0.
     # All letters are converted in upcase to match the hash keys.
     else
@@ -46,7 +46,7 @@ class Scrabble
       return 'invalid letter'
     else
       # letter value
-      @@letter_value = @@letters_points.values_at(*letter.upcase.chars).reduce(:+)
+      @@letter_value = @@letters_points.values_at(*letter.upcase).reduce(:+)
       # the letter value is added once because is already added in the word score once
       final_score = score(word) + @@letter_value
     end
@@ -54,7 +54,8 @@ class Scrabble
 
   def triple_letter(word,letter)
     # the letter_score is added at the word score twice because is already counted once
-    double_letter_value = 2 * @@letters_points.values_at(*letter.upcase.chars).reduce(:+)
+    tot_score = @@letters_points.values_at(*letter.upcase).reduce(:+)
+    double_letter_value = tot_score * 3
     # the double_letter_value is added how many times (@@letter_repetition) the letter is repeated in the word
     final_score = score(word) + @@letter_repetition * double_letter_value
   end
