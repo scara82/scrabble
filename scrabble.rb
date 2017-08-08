@@ -23,7 +23,6 @@ class Scrabble
     # The default value is zero so if no word is entered it returns 0.
     # All letters are converted in upcase to match the hash keys.
     else
-      tot_score = 0
       tot_score = @@letters_points.values_at(*word.upcase.chars).reduce(0, :+)
         return tot_score
     end
