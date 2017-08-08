@@ -12,7 +12,7 @@ class Scrabble
 
   def score(word)
     if word === nil
-      return 0
+      0
 
     # check if there are special characters or numbers in the word
     elsif word =~ /[^a-zA-Z]/
