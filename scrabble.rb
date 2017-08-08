@@ -29,7 +29,7 @@ class Scrabble
   end
 
   def is_the_letter_into_the_word?(word, letter)
-    ((n = word.count letter) > 0)? "#{n} times" : 'no, the letter is not in the word'
+    ((n = word.count letter) > 0)? "Yes, #{letter} is #{n} times into the word" : 'no, the letter is not in the word'
   end
 
   def letter_score(letter)
