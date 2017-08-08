@@ -44,7 +44,7 @@ class Scrabble
     triple_word_score = score(word) * 3
   end
 
-  def double_letter(word,letter)
+  def double_letter(word, letter)
     # the conditional contruct will check how many times the letter is in the word.
     # if zero a "invalid letter" messagge will be returned otherwise will return
     # the basic score of the word, plus the letter value one time (because one times
@@ -52,7 +52,7 @@ class Scrabble
     ((n = word.count letter) > 0)? (score(word) + n * letter_score(letter)) : 'invalid letter'
   end
 
-  def triple_letter(word,letter)
+  def triple_letter(word, letter)
     # the conditional contruct will check how many times the letter is in the word.
     # if zero a "invalid letter" messagge will be returned otherwise will return
     # the basic score of the word, plus the letter value two time (because one times
